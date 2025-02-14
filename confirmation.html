@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking - Confirmation</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Smart Parking System</h1>
+    </header>
+
+    <div class="confirmation-container">
+        <h2>Booking Confirmed!</h2>
+
+        <div id="bookingSummary"></div>
+
+        <button id="payButton">Pay and Proceed</button>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Choose Payment Method</h2>
+            <div class="payment-options">
+                <button id="netBanking">Net Banking</button>
+                <button id="creditCard">Credit Card</button>
+                <button id="debitCard">Debit Card</button>
+                <button id="upi">UPI</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Smart Parking System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Payment Modal Logic
+            const payButton = document.getElementById("payButton");
+            const paymentModal = document.getElementById("paymentModal");
+            const closeModal = document.getElementsByClassName("close")[0];
+
+            if (payButton && paymentModal && closeModal) {
+                payButton.addEventListener("click", () => {
+                    paymentModal.style.display = "block";
+                });
+
+                closeModal.addEventListener("click", () => {
+                    paymentModal.style.display = "none";
+                });
+
+                window.addEventListener("click", (event) => {
+                    if (event.target === paymentModal) {
+                        paymentModal.style.display = "none";
+                    }
+                });
+
+                // Handle Payment Options
+                const netBankingBtn = document.getElementById("netBanking");
+                const creditCardBtn = document.getElementById("creditCard");
+                const debitCardBtn = document.getElementById("debitCard");
+                const upiBtn = document.getElementById("upi");
+
+                if (netBankingBtn && creditCardBtn && debitCardBtn && upiBtn) {
+                    netBankingBtn.addEventListener("click", () => handlePayment("Net Banking"));
+                    creditCardBtn.addEventListener("click", () => handlePayment("Credit Card"));
+                    debitCardBtn.addEventListener("click", () => handlePayment("Debit Card"));
+                    upiBtn.addEventListener("click", () => handlePayment("UPI"));
+                }
+            }
+
+            // Redirect to card payment page for Credit/Debit Card
+            const creditCardBtn = document.getElementById("creditCard");
+            const debitCardBtn = document.getElementById("debitCard");
+
+            if (creditCardBtn && debitCardBtn) {
+                creditCardBtn.addEventListener("click", () => {
+                    window.location.href = "card_payment.html";
+                });
+
+                debitCardBtn.addEventListener("click", () => {
+                    window.location.href = "card_payment.html";
+                });
+            }
+        });
+
+        function handlePayment(paymentMethod) {
+            if (paymentMethod === "Net Banking" || paymentMethod === "UPI") {
+                alert(`You have selected ${paymentMethod}. Redirecting to payment gateway...`);
+                window.location.href = "success.html"; // Redirect to a success page
+            }
+        }
+    </script>
+</body>
+</html>

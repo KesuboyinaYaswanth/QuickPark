@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Payment - Smart Parking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Smart Parking System</h1>
+    </header>
+
+    <div class="payment-container">
+        <h2>Credit/Debit Card Payment</h2>
+        <form id="cardPaymentForm">
+            <label for="cardNumber">Card Number:</label>
+            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+
+            <label for="cardName">Name on Card:</label>
+            <input type="text" id="cardName" placeholder="John Doe" required>
+
+            <div class="row">
+                <div>
+                    <label for="expiryMonth">Expiry Month:</label>
+                    <input type="number" id="expiryMonth" placeholder="MM" min="1" max="12" required>
+                </div>
+                <div>
+                    <label for="expiryYear">Expiry Year:</label>
+                    <input type="number" id="expiryYear" placeholder="YYYY" min="2023" max="2030" required>
+                </div>
+                <div>
+                    <label for="cvv">CVV:</label>
+                    <input type="number" id="cvv" placeholder="123" min="100" max="999" required>
+                </div>
+            </div>
+
+            <button type="submit">Pay Now</button>
+            <button type="button" onclick="window.location.href='confirmation.html'">Cancel</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Smart Parking System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("cardPaymentForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const cardNumber = document.getElementById("cardNumber").value;
+            const cardName = document.getElementById("cardName").value;
+            const expiryMonth = document.getElementById("expiryMonth").value;
+            const expiryYear = document.getElementById("expiryYear").value;
+            const cvv = document.getElementById("cvv").value;
+
+            // Validate card details (basic validation)
+            if (cardNumber.length !== 16 || isNaN(cardNumber)) {
+                alert("Please enter a valid 16-digit card number.");
+                return;
+            }
+
+            if (expiryMonth < 1 || expiryMonth > 12) {
+                alert("Please enter a valid expiry month (1-12).");
+                return;
+            }
+
+            if (expiryYear < 2023 || expiryYear > 2030) {
+                alert("Please enter a valid expiry year (2023-2030).");
+                return;
+            }
+
+            if (cvv.length !== 3 || isNaN(cvv)) {
+                alert("Please enter a valid 3-digit CVV.");
+                return;
+            }
+
+            // If all validations pass, redirect to the success page
+            alert("Payment successful! Redirecting to the success page...");
+            window.location.href = "success.html";
+        });
+    </script>
+</body>
+</html>

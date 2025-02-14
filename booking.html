@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking - Booking</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const parkingName = urlParams.get('parking');
+
+            if (parkingName) {
+                document.getElementById("selectedParking").value = parkingName;
+                document.getElementById("parkingDetails").innerHTML = `<h3>Booking for: ${parkingName}</h3>`;
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Smart Parking System</h1>
+    </header>
+
+    <div class="booking-container">
+        <h2>Book Parking</h2>
+        <div id="parkingDetails"></div>
+        <form id="bookingDetailsForm">
+            <input type="hidden" id="selectedParking" name="selectedParking">
+            <label for="checkinDate">Check-in Date:</label>
+            <input type="date" id="checkinDate" name="checkinDate" required><br><br>
+
+            <label for="checkinTime">Check-in Time:</label>
+            <input type="time" id="checkinTime" name="checkinTime" required><br><br>
+
+            <label for="duration">Duration (hours):</label>
+            <input type="number" id="duration" name="duration" min="1" required><br><br>
+
+            <button type="submit">Confirm Booking</button>
+            <button type="button" onclick="window.location.href='dashboard.html'">Cancel</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Smart Parking System. All rights reserved.</p>
+    </footer>
+</body>
+</html>

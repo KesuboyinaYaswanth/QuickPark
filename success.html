@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Success</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .success-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+            text-align: center;
+        }
+
+        .success-container h2 {
+            color: #28a745;
+        }
+
+        .success-container p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .success-container button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .success-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .success-container button.get-directions {
+            background-color: #28a745;
+        }
+
+        .success-container button.get-directions:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Smart Parking System</h1>
+    </header>
+
+    <div class="success-container">
+        <h2>Payment Successful!</h2>
+        <p>Your booking has been confirmed. Thank you for using Smart Parking.</p>
+
+        <!-- Buttons -->
+        <button class="get-directions" onclick="getDirections()">Get Directions to Parking Area</button>
+        <button onclick="window.location.href='dashboard.html'">Go to Dashboard</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Smart Parking System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to get directions to the parking area
+        function getDirections() {
+            // Fixed parking location for prototype
+            const parkingLocation = "17.8238,83.3472";
+
+            // Fixed user location for prototype (e.g., "Your Current Location")
+            const userLocation = "17.8213,83.3426"; // Example coordinates for Visakhapatnam
+
+            // Construct Google Maps URL with fixed locations
+            const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(userLocation)}&destination=${encodeURIComponent(parkingLocation)}&travelmode=driving`;
+
+            // Open Google Maps in a new tab
+            window.open(mapsUrl, '_blank');
+        }
+    </script>
+</body>
+</html>

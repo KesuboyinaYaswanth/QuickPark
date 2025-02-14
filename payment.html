@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking - Payment</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Smart Parking System</h1>
+    </header>
+
+    <div class="payment-container">
+        <h2>Payment</h2>
+        <div id="paymentSummary">
+            <p>Loading payment details...</p>
+        </div>
+
+        <form id="paymentForm">
+            <label for="paymentMethod">Choose Payment Method:</label>
+            <select id="paymentMethod" name="paymentMethod" required>
+                <option value="credit">Credit Card</option>
+                <option value="debit">Debit Card</option>
+                <option value="upi">UPI</option>
+                <option value="netbanking">Net Banking</option>
+            </select>
+
+            <label for="cardNumber">Card Number (if applicable):</label>
+            <input type="text" id="cardNumber" placeholder="Enter card number">
+
+            <button type="submit">Pay Now</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Smart Parking System. All rights reserved.</p>
+    </footer>
+</body>
+</html>
